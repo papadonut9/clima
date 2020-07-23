@@ -7,3 +7,7 @@
   - Initaited repo.
   - Updated Loading Screen UI.
   - Indexed and added dependencies in single ```dependencies.dart```.
+
+- **v0.0.1_build-1(Alpha)**
+  - Updated assets.
+  - Updated CityScreen UI.
