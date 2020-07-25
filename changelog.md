@@ -19,6 +19,9 @@
 
 - **v0.0.2_build-3(Alpha)**
   - Refactored code to black box the location service.
-  - Updated ```AndroidManifest.xml``` and ```Info.plist``` to get the location permission from user.
+  - Updated ```AndroidManifest.xml```(Android) and ```Info.plist```(iOS) to get the location permission from user.
   - Updated names of screens ```loading.dart``` and ```location.dart``` to ```loadingScreen.dart``` and ```locationScreen.dart``` respectively to prevent any confusion.
   - >I won't be releasing a build for this version. It'd be released on a major release.
+
+- **v0.0.2_build-4(Alpha)**
+  - Updated Changelog
