@@ -25,3 +25,6 @@
 
 - **v0.0.2_build-4(Alpha)**
   - Updated Changelog
+
+- **v0.0.2_build-4(Alpha)**
+  - Added functionality for http request interpretation
