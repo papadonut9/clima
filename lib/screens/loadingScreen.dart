@@ -1,4 +1,5 @@
 import 'package:clima/dependencies.dart';
+import 'dart:convert';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -6,40 +7,38 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-  void getLocation() async {
-    Location location = Location(); //object declared
+  double _latitudeX;
+  double _longitudeX;
+  void getLocationData() async {
+    Location location = Location(); //object declared for location
 
     await location
         .getCurrentLocation(); //awaiting to get location in background.
-    double _latitudeX =
-        location.getLatitude(); // Get Latitude of current location.
-    double _longitudeX =
-        location.getLongitude(); // Get Longitude of current location.
+    _latitudeX = location.getLatitude(); // Get Latitude of current location.
+    _longitudeX = location.getLongitude(); // Get Longitude of current location.
+    // getData();
+    ConnectionHelper connectionHelper = ConnectionHelper('https://api.openweathermap.org/data/2.5/weather?lat=$_latitudeX&lon=$_longitudeX&appid=$kAPIKey');
+      var weatherData = await connectionHelper.getData();
 
-    print('Latitude: $_latitudeX.');
-    print('Longitude: $_longitudeX');
   }
 
-  void getData() async{
-    Response response = await get('https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=439d4b804bc8187953eb36d2a8c26a02');
-    print(response);
-  }
+
 
   @override
   void initState() {
+    // if you don't get this, see "Flutter Widget lifecycle".
     super.initState();
-    getLocation(); // obtain location while widget is built
+    getLocationData(); // obtains location while widget is "Hot Restarted!"
   }
 
   @override
   Widget build(BuildContext context) {
-    getData();
     return Scaffold(
       body: Center(
         child: RaisedButton(
           onPressed: () {
-            getLocation();
-            //Get the current location
+            getLocationData();  //Gets the current location
+          
           },
           child: Text('Get Location'),
         ),

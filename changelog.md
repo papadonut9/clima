@@ -28,3 +28,12 @@
 
 - **v0.0.2_build-4(Alpha)**
   - Added functionality for http request interpretation
+
+- **v0.1.0_build-5(beta)**
+  - Added ability to access weather data from [OpenWeatherMap](https://openweathermap.org).
+
+  - Since this is a access only app, I've used **free API**.
+
+  - Improved code refactoring.
+
+  - You are still unable to access the weather screen. But the app works in backend and gives console output.
