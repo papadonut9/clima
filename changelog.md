@@ -37,3 +37,10 @@
   - Improved code refactoring.
 
   - You are still unable to access the weather screen. But the app works in backend and gives console output.
+
+- **v1.0.0_build-6(Stable)**
+  - Updated Weather UI.
+  - Now it shows the weather along with the condition, which is displayed by an emoji after temperature.
+  - Since I live in a region where metric system is followed, I've used celcius as a unit of measurement. And the API can provide only one at a time.
+  I'll include temperatures in Fahrenheit in a future update along with weather data dating back 5 days.
+  - Added loading screen animation using the ```flutter_spinkit``` package.

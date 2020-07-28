@@ -17,12 +17,19 @@ class _LoadingScreenState extends State<LoadingScreen> {
     _latitudeX = location.getLatitude(); // Get Latitude of current location.
     _longitudeX = location.getLongitude(); // Get Longitude of current location.
     // getData();
-    ConnectionHelper connectionHelper = ConnectionHelper('https://api.openweathermap.org/data/2.5/weather?lat=$_latitudeX&lon=$_longitudeX&appid=$kAPIKey');
-      var weatherData = await connectionHelper.getData();
+    ConnectionHelper connectionHelper = ConnectionHelper(
+        'https://api.openweathermap.org/data/2.5/weather?lat=$_latitudeX&lon=$_longitudeX&appid=$kAPIKey&units=metric');
+    var weatherData = await connectionHelper.getData();
 
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return LocationScreen(locationWeather: weatherData,);
+        },
+      ),
+    );
   }
-
-
 
   @override
   void initState() {
@@ -35,12 +42,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            getLocationData();  //Gets the current location
-          
-          },
-          child: Text('Get Location'),
+        child: SpinKitWave(
+          color: Colors.white,
+          size: 100.0,
         ),
       ),
     );

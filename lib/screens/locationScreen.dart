@@ -1,11 +1,43 @@
 import 'package:clima/dependencies.dart';
 
 class LocationScreen extends StatefulWidget {
+  final locationWeather;
+  LocationScreen({this.locationWeather});
+
   @override
   _LocationScreenState createState() => _LocationScreenState();
 }
 
 class _LocationScreenState extends State<LocationScreen> {
+  WeatherModel weatherModel = WeatherModel();
+  String temperature;
+  String weatherEmoji;
+  String cityName;
+  String message;
+
+  @override
+  void initState() {
+    super.initState();
+    uiUpdate(widget.locationWeather);
+  }
+
+  void uiUpdate(dynamic weatherData) {
+    setState(() {
+      double temperaturex = weatherData['main']['temp']; // main.temp
+      temperature = temperaturex.toStringAsFixed(1);
+      int temperatureInt = temperaturex.toInt();
+      int condition = weatherData['weather'][0]['id']; //  weather[0].id
+      weatherEmoji = weatherModel.getWeatherIcon(condition);
+      cityName = weatherData['name'];
+      if (cityName == 'Konkan Division') {
+        cityName = 'Mumbai';
+      }
+      message = weatherModel.getMessage(temperatureInt);
+    });
+    // print(cityName);
+    // print(temperature);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,11 +82,11 @@ class _LocationScreenState extends State<LocationScreen> {
                 child: Row(
                   children: <Widget>[
                     Text(
-                      '32°',
+                      '$temperature°',
                       style: kTempTextStyle,
                     ),
                     Text(
-                      '☀️',
+                      '$weatherEmoji',
                       style: kConditionTextStyle,
                     ),
                   ],
@@ -63,7 +95,7 @@ class _LocationScreenState extends State<LocationScreen> {
               Padding(
                 padding: EdgeInsets.only(right: 15.0),
                 child: Text(
-                  "It's 🍦 time in San Francisco!",
+                  "$message in $cityName!",
                   textAlign: TextAlign.right,
                   style: kMessageTextStyle,
                 ),
@@ -75,7 +107,3 @@ class _LocationScreenState extends State<LocationScreen> {
     );
   }
 }
-
-      // double temperature = parsedData ['main'] ['temp']; // main.temp
-      // int condition = parsedData['weather'] [0] ['id'];  //  weather[0].id
-      // String cityName = parsedData ['name'];

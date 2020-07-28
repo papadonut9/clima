@@ -6,6 +6,7 @@ export 'package:flutter/material.dart';
 export 'package:google_fonts/google_fonts.dart';
 export 'package:geolocator/geolocator.dart';
 export 'package:http/http.dart';
+export 'package:flutter_spinkit/flutter_spinkit.dart';
 
 // Project file repositories
   // internal

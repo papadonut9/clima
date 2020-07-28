@@ -3,7 +3,7 @@ description: An app that shows weather interactively.
 
 publish_to: 'none' 
 
-version: 0.0.2+5
+version: 1.0.0+6
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -13,6 +13,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^0.1.3
+  flutter_spinkit: ^3.1.0 #For using spinning loading animation
   geolocator: ^3.0.1 #For using location services
   google_fonts: ^1.1.0 #For using custom fonts from google fonts without downloading them
   http: ^0.12.2  #For making http requests
