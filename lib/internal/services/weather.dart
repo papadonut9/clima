@@ -1,6 +1,30 @@
 import 'package:clima/dependencies.dart';
 
 class WeatherModel {
+  
+  Future<dynamic> getCity(String cityName) async {
+    var url =
+        '$openWeatherMapURL?q=$cityName&appid=$kAPIKey&units=$measurementSystem';
+    ConnectionHelper connectionHelper = ConnectionHelper(url);
+    var weatherData = await connectionHelper.getData();
+    return weatherData;
+  }
+
+  Future<dynamic> getWeather() async {
+    Location location = Location(); //object declared for location
+
+    await location
+        .getCurrentLocation(); //awaiting to get location in background.
+    // _latitudeX = location.getLatitude(); // Get Latitude of current location.
+    // _longitudeX = location.getLongitude(); // Get Longitude of current location.
+    // getData();
+    ConnectionHelper connectionHelper = ConnectionHelper(
+        '$openWeatherMapURL?lat=${location.getLatitude()}&lon=${location.getLongitude()}&appid=$kAPIKey&units=$measurementSystem');
+    var weatherData = await connectionHelper.getData();
+
+    return weatherData;
+  }
+
   String getWeatherIcon(int condition) {
     if (condition < 300) {
       return '🌩';

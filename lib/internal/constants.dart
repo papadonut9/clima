@@ -19,4 +19,27 @@ const kMessageTextStyle = TextStyle(
   fontSize: 60.0,
 );
 
+const kTextFieldInputDecor = InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    icon: Icon(
+                      Icons.location_on,
+                      color: Colors.white,
+                      size: 45,
+                    ),
+                    hintText: 'Enter City Name',
+                    hintStyle: TextStyle(
+                      color: Colors.grey,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                      borderSide: BorderSide.none,
+                    ),
+                  );
+
 const String kAPIKey = '3b8e2f39b6c23e978cc7a26fc0bcace8';
+
+const String openWeatherMapURL = 'https://api.openweathermap.org/data/2.5/weather';
+const String measurementSystem = 'metric';

@@ -44,3 +44,11 @@
   - Since I live in a region where metric system is followed, I've used celcius as a unit of measurement. And the API can provide only one at a time.
   I'll include temperatures in Fahrenheit in a future update along with weather data dating back 5 days.
   - Added loading screen animation using the ```flutter_spinkit``` package.
+
+- **v1.1.0_build-7(Stable)**
+  - Improved code execution.
+  - Testing out a feature which allows searching for the weather in a given city.
+
+- **v2.0.0_build-8(Stable)**
+  - Finally Live. The top icons are now fully functional. After clicking left icon, you're displayed the weather at your current location.
+  - The right icon allows you to search for any city and then the app displays you the weather of that city.

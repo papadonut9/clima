@@ -10,10 +10,11 @@ class LocationScreen extends StatefulWidget {
 
 class _LocationScreenState extends State<LocationScreen> {
   WeatherModel weatherModel = WeatherModel();
-  String temperature;
+  int temperature;
   String weatherEmoji;
   String cityName;
   String message;
+  String extMessage;
 
   @override
   void initState() {
@@ -23,16 +24,27 @@ class _LocationScreenState extends State<LocationScreen> {
 
   void uiUpdate(dynamic weatherData) {
     setState(() {
-      double temperaturex = weatherData['main']['temp']; // main.temp
-      temperature = temperaturex.toStringAsFixed(1);
-      int temperatureInt = temperaturex.toInt();
+      if (weatherData == null) {
+        temperature = 0;
+        weatherEmoji = 'Error!!';
+        extMessage = 'Sorry, I can\'t provide weather at the moment.';
+        cityName = '';
+        return;
+      }
+      // FIXME: temperaturex throwing out a stack trace when temperature is a perfect integer.
+      var temperaturex = weatherData['main']['temp']; // main.temp
+      temperature = temperaturex.toInt();
+      // int temperatureInt = temperaturex.toInt();
       int condition = weatherData['weather'][0]['id']; //  weather[0].id
       weatherEmoji = weatherModel.getWeatherIcon(condition);
       cityName = weatherData['name'];
       if (cityName == 'Konkan Division') {
         cityName = 'Mumbai';
+      }else{
+        cityName = weatherData['name'];
       }
-      message = weatherModel.getMessage(temperatureInt);
+      message = weatherModel.getMessage(temperature);
+      extMessage = '$message in $cityName!';
     });
     // print(cityName);
     // print(temperature);
@@ -62,16 +74,34 @@ class _LocationScreenState extends State<LocationScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   FlatButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      var weatherData = await weatherModel.getWeather();
+                      uiUpdate(weatherData);
+                    },
                     child: Icon(
                       Icons.near_me,
                       size: 50.0,
                     ),
                   ),
                   FlatButton(
-                    onPressed: () {},
+                    onPressed: () async{
+                      var typedInput = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return CityScreen();
+                          },
+                        ),
+                      );
+                      // print(typedInput);
+                      if (typedInput !=  null)  {
+                        var weatherData = await weatherModel.getCity(typedInput);
+                        uiUpdate(weatherData);
+                        // print(weatherData);
+                      }
+                    },
                     child: Icon(
-                      Icons.location_city,
+                      Icons.search,
                       size: 50.0,
                     ),
                   ),
@@ -95,7 +125,7 @@ class _LocationScreenState extends State<LocationScreen> {
               Padding(
                 padding: EdgeInsets.only(right: 15.0),
                 child: Text(
-                  "$message in $cityName!",
+                  extMessage,
                   textAlign: TextAlign.right,
                   style: kMessageTextStyle,
                 ),
