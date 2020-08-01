@@ -52,3 +52,9 @@
 - **v2.0.0_build-8(Stable)**
   - Finally Live. The top icons are now fully functional. After clicking left icon, you're displayed the weather at your current location.
   - The right icon allows you to search for any city and then the app displays you the weather of that city.
+
+- **v2.0.1_build-9(Stable)**
+  - Resolved a glitch in which the final release version of the app was stuck in a loading screen. 
+  - Thanks to ```Miyoyo#5957``` on ```r/flutter``` discord server for helping me out with this problem.
+  - I mistakenly forgot my ```API key``` in ```constants.dart```. So I've created a new ```secrets.dart``` which holds the ```kAPIKey``` constant.
+  - Refer [```readme.md```](https://github.com/papadonut9/clima/blob/master/README.md) to know how to initailise a credentials file.

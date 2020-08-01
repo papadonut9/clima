@@ -31,6 +31,9 @@
 /build/
 scratch.dart
 
+#to hide your api keys and other sensitive keys
+secrets.dart
+
 # Web related
 lib/generated_plugin_registrant.dart
 

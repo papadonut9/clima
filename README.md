@@ -4,6 +4,10 @@ An app that shows the weather by accessing your location.
 \
 Design by: [Olia Gozha](https://dribbble.com/shots/4663154-).
 
+> To create a credentials file, create ```secrets.dart``` in ```lib\internal\```.  
+> to create a constant for holding API key, initialise the constant in ```secrets.dart``` as follows.  
+
+> const String kAPIKey = '```<Your API key>```';
 ##### For contacting me, use the **PGP Key** provided.
  ```
 -----BEGIN PGP PUBLIC KEY BLOCK-----

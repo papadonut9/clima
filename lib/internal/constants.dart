@@ -39,7 +39,7 @@ const kTextFieldInputDecor = InputDecoration(
                     ),
                   );
 
-const String kAPIKey = '3b8e2f39b6c23e978cc7a26fc0bcace8';
+
 
 const String openWeatherMapURL = 'https://api.openweathermap.org/data/2.5/weather';
 const String measurementSystem = 'metric';

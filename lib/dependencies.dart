@@ -11,6 +11,7 @@ export 'package:flutter_spinkit/flutter_spinkit.dart';
 // Project file repositories
   // internal
 export 'package:clima/internal/constants.dart';
+export 'package:clima/internal/secrets.dart';
     // services
 export 'package:clima/internal/services/connectivity.dart';
 export 'package:clima/internal/services/location.dart';
